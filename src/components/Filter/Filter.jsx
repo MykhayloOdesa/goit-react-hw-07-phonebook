@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import { setQueryFilter } from 'redux/filterSlice';
 import { selectFilter } from 'redux/selectors';
 
