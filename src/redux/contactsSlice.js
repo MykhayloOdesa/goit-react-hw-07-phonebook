@@ -13,7 +13,7 @@ const handleRejected = (state, action) => {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
-    contact: [],
+    items: [],
     isLoading: false,
     error: null,
   },
@@ -22,7 +22,7 @@ const contactsSlice = createSlice({
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.contact = action.payload;
+      state.items = action.payload;
     },
     [fetchContacts.rejected]: handleRejected,
 
@@ -30,7 +30,7 @@ const contactsSlice = createSlice({
     [addContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.contact.push(action.payload);
+      state.items.push(action.payload);
     },
     [addContact.rejected]: handleRejected,
 
@@ -38,10 +38,10 @@ const contactsSlice = createSlice({
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      const index = state.contact.findIndex(
+      const index = state.items.findIndex(
         contact => contact.id === action.payload.id
       );
-      state.contact.splice(index, 1);
+      state.items.splice(index, 1);
     },
     [deleteContact.rejected]: handleRejected,
   },
